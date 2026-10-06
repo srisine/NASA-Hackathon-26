@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.css"
+      integrity="sha256-P+hWJNlpL+GBSRYC7cdsDbQH91URmpDeOzLp7DbFRtE="
+      crossorigin=""
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "leaflet": "https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.js"
+        },
+        "integrity": {
+          "https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.js": "sha256-gj5JhNAaMi6LCs+jVFOk8sXDe1sWSS2Zlc87m+trLiQ="
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <style>
+      #map {
+        height: 400px;
+      }
+      .expo {
+        display: flex;
+        /* padding: 150px; */
+        max-height: fit-content;
+      }
+      .main {
+        display: flex;
+      }
+      .main > div {
+        flex: 1;
+      }
+      button {
+        padding: 15px;
+        background-color: red;
+      }
+    </style>
+    <h1>WebApp Prototype</h1>
+    <div id="map"></div>
+    <div class="expo">
+      <p>Hottest day</p>
+      <hr />
+      <p>Max entries on:</p>
+      <hr />
+      <p>Peak hotspot:</p>
+      <hr />
+      <button>Export Map</button>
+    </div>
+
+    <div class="main">
+      <div class="function">
+        <p>Date:</p>
+        <label for="metric">Metric:</label>
+        <select id="metric">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+
+        <label for="graph">Graph:</label>
+        <select id="graph">
+          <option value="bar-graph">Bar-Graph</option>
+          <option value="line-graph">Line-Graph</option>
+          <option value="histogram">Histogram</option>
+          <option value="scatter-plot">SCatter-Plot</option>
+          <button>Plot</button>
+
+          <section>
+            <input
+              type="checkbox"
+              id="heat-map"
+              name="heatmap"
+              value="heatmap"
+            />
+            <label for="heat-map">HeatMap</label>
+          </section>
+
+          <section>
+            <input
+              type="checkbox"
+              id="point-map"
+              name="pointmap"
+              value="pointmap"
+              checked
+            />
+            <label for="point-map">point-map</label>
+          </section>
+        </select>
+      </div>
+      <div class="info">
+        <p>Total Fire Detection:</p>
+        <hr />
+        <p>Peak Energy Output:</p>
+        <hr />
+
+        <h3>Data Distribution</h3>
+        <p>MODRIS</p>
+        <hr />
+        <p>VIRS</p>
+        <hr />
+        <p>Total Entries:</p>
+        <hr />
+      </div>
+    </div>
+  </body>
+  <script type="module">
+    import {
+      LeafletMap,
+      TileLayer,
+      Marker,
+      Circle,
+      Polygon,
+      Popup,
+    } from "leaflet";
+    const map = new LeafletMap("map").setView([-25.2744, 133.7751], 4.3);
+
+    // ...
+    new TileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+  </script>
+  <script src="script.js"></script>
+</html>
