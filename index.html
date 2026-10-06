@@ -56,7 +56,20 @@
 
     <div class="main">
       <div class="function">
-        <p>Date:</p>
+
+        <label for="start-date">From:</label>
+<input type="date" id="start-date" name="start-date">
+
+<label for="end-date">To:</label>
+<input type="date" id="end-date" name="end-date">
+
+<input type="submit" value="Submit" onclick="setDate()">
+<p class="display-start-date"></p>
+<p class="display-end-date"></p>
+
+
+
+
         <label for="metric">Metric:</label>
         <select id="metric">
           <option value="1">1</option>
@@ -69,6 +82,7 @@
           <option value="line-graph">Line-Graph</option>
           <option value="histogram">Histogram</option>
           <option value="scatter-plot">SCatter-Plot</option>
+          </select>
           <button>Plot</button>
 
           <section>
